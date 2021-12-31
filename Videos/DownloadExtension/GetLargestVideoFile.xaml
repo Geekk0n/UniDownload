@@ -1,0 +1,366 @@
+<Activity mc:Ignorable="sap sap2010" x:Class="GetLargestVideoFile" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:av="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=System.Private.CoreLib" xmlns:str="clr-namespace:System.Text.RegularExpressions;assembly=System.Text.RegularExpressions" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:uix="http://schemas.uipath.com/workflow/activities/uix" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <x:Members>
+    <x:Property Name="out_FileSize" Type="OutArgument(x:Double)" />
+  </x:Members>
+  <sap2010:ExpressionActivityEditor.ExpressionActivityEditor>C#</sap2010:ExpressionActivityEditor.ExpressionActivityEditor>
+  <sap:VirtualizedContainerService.HintSize>944.8,744</sap:VirtualizedContainerService.HintSize>
+  <sap2010:WorkflowViewState.IdRef>ActivityBuilder_1</sap2010:WorkflowViewState.IdRef>
+  <TextExpression.NamespacesForImplementation>
+    <sco:Collection x:TypeArguments="x:String">
+      <x:String>System.Activities</x:String>
+      <x:String>System.Activities.Statements</x:String>
+      <x:String>System.Activities.Expressions</x:String>
+      <x:String>System.Activities.Validation</x:String>
+      <x:String>System.Activities.XamlIntegration</x:String>
+      <x:String>Microsoft.VisualBasic</x:String>
+      <x:String>Microsoft.VisualBasic.Activities</x:String>
+      <x:String>System</x:String>
+      <x:String>System.Collections</x:String>
+      <x:String>System.Collections.Generic</x:String>
+      <x:String>System.Data</x:String>
+      <x:String>System.Diagnostics</x:String>
+      <x:String>System.Drawing</x:String>
+      <x:String>System.IO</x:String>
+      <x:String>System.Linq</x:String>
+      <x:String>System.Net.Mail</x:String>
+      <x:String>System.Xml</x:String>
+      <x:String>System.Text</x:String>
+      <x:String>System.Xml.Linq</x:String>
+      <x:String>UiPath.Core</x:String>
+      <x:String>UiPath.Core.Activities</x:String>
+      <x:String>System.Windows.Markup</x:String>
+      <x:String>System.Linq.Expressions</x:String>
+      <x:String>System.Collections.ObjectModel</x:String>
+      <x:String>System.Reflection</x:String>
+      <x:String>UiPath.UIAutomationNext.Enums</x:String>
+      <x:String>UiPath.UIAutomationCore.Contracts</x:String>
+      <x:String>UiPath.UIAutomationNext.Contracts</x:String>
+      <x:String>System.Runtime.Serialization</x:String>
+      <x:String>System.Text.RegularExpressions</x:String>
+      <x:String>UiPath.UIAutomationNext.Activities</x:String>
+      <x:String>UiPath.Platform.ObjectLibrary</x:String>
+      <x:String>UiPath.Shared.Activities</x:String>
+    </sco:Collection>
+  </TextExpression.NamespacesForImplementation>
+  <TextExpression.ReferencesForImplementation>
+    <sco:Collection x:TypeArguments="AssemblyReference">
+      <AssemblyReference>Microsoft.CSharp</AssemblyReference>
+      <AssemblyReference>System</AssemblyReference>
+      <AssemblyReference>System.Core</AssemblyReference>
+      <AssemblyReference>System.Activities</AssemblyReference>
+      <AssemblyReference>System.Data</AssemblyReference>
+      <AssemblyReference>System.Runtime.Serialization</AssemblyReference>
+      <AssemblyReference>System.ServiceModel</AssemblyReference>
+      <AssemblyReference>System.ServiceModel.Activities</AssemblyReference>
+      <AssemblyReference>System.Xaml</AssemblyReference>
+      <AssemblyReference>System.Activities</AssemblyReference>
+      <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
+      <AssemblyReference>System.Private.CoreLib</AssemblyReference>
+      <AssemblyReference>System.Data</AssemblyReference>
+      <AssemblyReference>System</AssemblyReference>
+      <AssemblyReference>System.Drawing</AssemblyReference>
+      <AssemblyReference>System.Core</AssemblyReference>
+      <AssemblyReference>System.Xml</AssemblyReference>
+      <AssemblyReference>System.Xml.Linq</AssemblyReference>
+      <AssemblyReference>System.Xaml</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.UiAutomation.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities.Design</AssemblyReference>
+      <AssemblyReference>System.Console</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.TypeConverter</AssemblyReference>
+      <AssemblyReference>System.Memory</AssemblyReference>
+      <AssemblyReference>System.ComponentModel</AssemblyReference>
+      <AssemblyReference>System.Private.Uri</AssemblyReference>
+      <AssemblyReference>System.Configuration.ConfigurationManager</AssemblyReference>
+      <AssemblyReference>System.Security.Permissions</AssemblyReference>
+      <AssemblyReference>UiPath.Excel</AssemblyReference>
+      <AssemblyReference>System.Linq.Expressions</AssemblyReference>
+      <AssemblyReference>System.ObjectModel</AssemblyReference>
+      <AssemblyReference>System.Reflection.Metadata</AssemblyReference>
+      <AssemblyReference>System.Reflection.DispatchProxy</AssemblyReference>
+      <AssemblyReference>UiPath.UIAutomationNext</AssemblyReference>
+      <AssemblyReference>UiPath.UIAutomationCore</AssemblyReference>
+      <AssemblyReference>System.Collections</AssemblyReference>
+      <AssemblyReference>System.Private.ServiceModel</AssemblyReference>
+      <AssemblyReference>System.Runtime.Serialization.Formatters</AssemblyReference>
+      <AssemblyReference>System.Runtime.Serialization.Primitives</AssemblyReference>
+      <AssemblyReference>System.Private.DataContractSerialization</AssemblyReference>
+      <AssemblyReference>System.Text.RegularExpressions</AssemblyReference>
+      <AssemblyReference>UiPath.UIAutomationNext.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Platform</AssemblyReference>
+      <AssemblyReference>UiPath.Excel.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.OCR.Activities</AssemblyReference>
+    </sco:Collection>
+  </TextExpression.ReferencesForImplementation>
+  <Flowchart sap:VirtualizedContainerService.HintSize="633.6,636.8" sap2010:WorkflowViewState.IdRef="Flowchart_1">
+    <sap:WorkflowViewStateService.ViewState>
+      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+        <av:Point x:Key="ShapeLocation">270,2.5</av:Point>
+        <av:Size x:Key="ShapeSize">60,75.2</av:Size>
+        <av:PointCollection x:Key="ConnectorLocation">300,77.7 300,127.7</av:PointCollection>
+      </scg:Dictionary>
+    </sap:WorkflowViewStateService.ViewState>
+    <Flowchart.StartNode>
+      <x:Reference>__ReferenceID2</x:Reference>
+    </Flowchart.StartNode>
+    <FlowStep x:Name="__ReferenceID2">
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <av:Point x:Key="ShapeLocation">200,127.7</av:Point>
+          <av:Size x:Key="ShapeSize">200,52.8</av:Size>
+          <av:PointCollection x:Key="ConnectorLocation">300,180.5 300,243.60000000000002</av:PointCollection>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+      <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="200,52.8" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Trace">
+        <ui:LogMessage.Message>
+          <InArgument x:TypeArguments="x:Object">
+            <CSharpValue x:TypeArguments="x:Object" sap2010:WorkflowViewState.IdRef="CSharpValue`1_1">"Determining largest video File"</CSharpValue>
+          </InArgument>
+        </ui:LogMessage.Message>
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </ui:LogMessage>
+      <FlowStep.Next>
+        <FlowStep x:Name="__ReferenceID1">
+          <sap:WorkflowViewStateService.ViewState>
+            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+              <av:Point x:Key="ShapeLocation">200,243.60000000000002</av:Point>
+              <av:Size x:Key="ShapeSize">200,52.8</av:Size>
+              <av:PointCollection x:Key="ConnectorLocation">300,296.40000000000003 300,370.5</av:PointCollection>
+            </scg:Dictionary>
+          </sap:WorkflowViewStateService.ViewState>
+          <uix:NApplicationCard AttachMode="ByInstance" DisplayName="Use Browser Chrome: Robotik I - Einführung in die Robotik (WS 21/22) 01" sap:VirtualizedContainerService.HintSize="635.2,2152.8" sap2010:WorkflowViewState.IdRef="NApplicationCard_1" InteractionMode="DebuggerApi" OpenMode="Never" ScopeGuid="ce7ba23e-762d-479a-8ad5-75808f7a338d" Version="V1">
+            <uix:NApplicationCard.Body>
+              <ActivityAction x:TypeArguments="x:Object">
+                <ActivityAction.Argument>
+                  <DelegateInArgument x:TypeArguments="x:Object" Name="WSSessionData" />
+                </ActivityAction.Argument>
+                <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="601.6,1936" sap2010:WorkflowViewState.IdRef="Sequence_3">
+                  <Sequence.Variables>
+                    <Variable x:TypeArguments="scg:IEnumerable(ui:UiElement)" Name="downloadOptions" />
+                    <Variable x:TypeArguments="x:Int32" Name="countVideoOptions" />
+                    <Variable x:TypeArguments="x:Int32" Name="itemIndex" />
+                  </Sequence.Variables>
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                  <ui:FindChildren DisplayName="Find Children - Amount of Downloads" Filter="&lt;ctrl /&gt;" sap:VirtualizedContainerService.HintSize="560,107.2" sap2010:WorkflowViewState.IdRef="FindChildren_1" Scope="FIND_CHILDREN">
+                    <ui:FindChildren.Children>
+                      <OutArgument x:TypeArguments="scg:IEnumerable(ui:UiElement)">
+                        <CSharpReference x:TypeArguments="scg:IEnumerable(ui:UiElement)" sap2010:WorkflowViewState.IdRef="CSharpReference`1_12">downloadOptions</CSharpReference>
+                      </OutArgument>
+                    </ui:FindChildren.Children>
+                    <ui:FindChildren.Target>
+                      <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="3b5e9fe0-9c9e-426d-a56c-9d2714097203" InformativeScreenshot="e99e4a7bc64101937e7cb5a5cac270ab" Selector="&lt;wnd app='chrome.exe' cls='Chrome_WidgetWin_1' idx='*' /&gt;&lt;ctrl idx='3' role='grouping' /&gt;">
+                        <ui:Target.TimeoutMS>
+                          <InArgument x:TypeArguments="x:Int32" />
+                        </ui:Target.TimeoutMS>
+                        <ui:Target.WaitForReady>
+                          <InArgument x:TypeArguments="ui:WaitForReady" />
+                        </ui:Target.WaitForReady>
+                      </ui:Target>
+                    </ui:FindChildren.Target>
+                  </ui:FindChildren>
+                  <Assign sap:VirtualizedContainerService.HintSize="560,61.6" sap2010:WorkflowViewState.IdRef="Assign_1">
+                    <Assign.To>
+                      <OutArgument x:TypeArguments="x:Int32">
+                        <CSharpReference x:TypeArguments="x:Int32" sap2010:WorkflowViewState.IdRef="CSharpReference`1_13">countVideoOptions</CSharpReference>
+                      </OutArgument>
+                    </Assign.To>
+                    <Assign.Value>
+                      <InArgument x:TypeArguments="x:Int32">
+                        <CSharpValue x:TypeArguments="x:Int32" sap2010:WorkflowViewState.IdRef="CSharpValue`1_17">downloadOptions.Count()</CSharpValue>
+                      </InArgument>
+                    </Assign.Value>
+                  </Assign>
+                  <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="560,92.8" sap2010:WorkflowViewState.IdRef="LogMessage_3" Level="Trace">
+                    <ui:LogMessage.Message>
+                      <InArgument x:TypeArguments="x:Object">
+                        <CSharpValue x:TypeArguments="x:Object" sap2010:WorkflowViewState.IdRef="CSharpValue`1_16">"Detected " + (countVideoOptions-1).ToString() + " Video Options."</CSharpValue>
+                      </InArgument>
+                    </ui:LogMessage.Message>
+                  </ui:LogMessage>
+                  <Assign sap:VirtualizedContainerService.HintSize="560,61.6" sap2010:WorkflowViewState.IdRef="Assign_2">
+                    <Assign.To>
+                      <OutArgument x:TypeArguments="x:Double">
+                        <CSharpReference x:TypeArguments="x:Double" sap2010:WorkflowViewState.IdRef="CSharpReference`1_14">out_FileSize</CSharpReference>
+                      </OutArgument>
+                    </Assign.To>
+                    <Assign.Value>
+                      <InArgument x:TypeArguments="x:Double">0</InArgument>
+                    </Assign.Value>
+                  </Assign>
+                  <Assign sap:VirtualizedContainerService.HintSize="560,61.6" sap2010:WorkflowViewState.IdRef="Assign_3">
+                    <Assign.To>
+                      <OutArgument x:TypeArguments="x:Int32">
+                        <CSharpReference x:TypeArguments="x:Int32" sap2010:WorkflowViewState.IdRef="CSharpReference`1_15">itemIndex</CSharpReference>
+                      </OutArgument>
+                    </Assign.To>
+                    <Assign.Value>
+                      <InArgument x:TypeArguments="x:Int32">0</InArgument>
+                    </Assign.Value>
+                  </Assign>
+                  <ui:InterruptibleWhile DisplayName="While" sap:VirtualizedContainerService.HintSize="560,1256.8" sap2010:WorkflowViewState.IdRef="InterruptibleWhile_1">
+                    <ui:InterruptibleWhile.Body>
+                      <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="524.8,1089.6" sap2010:WorkflowViewState.IdRef="Sequence_1">
+                        <Sequence.Variables>
+                          <Variable x:TypeArguments="x:Int32" Name="groupingIdx" />
+                          <Variable x:TypeArguments="x:String" Name="fileSizeStr" />
+                          <Variable x:TypeArguments="scg:IEnumerable(str:Match)" Name="fileSizeMatch" />
+                          <Variable x:TypeArguments="x:Double" Name="fileSize" />
+                        </Sequence.Variables>
+                        <sap:WorkflowViewStateService.ViewState>
+                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                          </scg:Dictionary>
+                        </sap:WorkflowViewStateService.ViewState>
+                        <Assign sap:VirtualizedContainerService.HintSize="483.2,60" sap2010:WorkflowViewState.IdRef="Assign_4">
+                          <Assign.To>
+                            <OutArgument x:TypeArguments="x:Int32">
+                              <CSharpReference x:TypeArguments="x:Int32" sap2010:WorkflowViewState.IdRef="CSharpReference`1_5">groupingIdx</CSharpReference>
+                            </OutArgument>
+                          </Assign.To>
+                          <Assign.Value>
+                            <InArgument x:TypeArguments="x:Int32">
+                              <CSharpValue x:TypeArguments="x:Int32" sap2010:WorkflowViewState.IdRef="CSharpValue`1_19">5 + itemIndex</CSharpValue>
+                            </InArgument>
+                          </Assign.Value>
+                        </Assign>
+                        <uix:NGetAttribute Attribute="name" DisplayName="Get Attribute MB Size" sap:VirtualizedContainerService.HintSize="483.2,208" sap2010:WorkflowViewState.IdRef="NGetAttribute_1" ScopeIdentifier="ce7ba23e-762d-479a-8ad5-75808f7a338d" Version="V1">
+                          <uix:NGetAttribute.Result>
+                            <OutArgument x:TypeArguments="x:String">
+                              <CSharpReference x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpReference`1_16">fileSizeStr</CSharpReference>
+                            </OutArgument>
+                          </uix:NGetAttribute.Result>
+                          <uix:NGetAttribute.Target>
+                            <uix:TargetAnchorable DesignTimeRectangle="55, 50, 142, 27" ElementType="Text" FriendlyName="'342.7 MB - MP4'" FuzzySelectorArgument="&lt;ctrl role='row' /&gt;&lt;ctrl name='Robotik I - Einführung in die Robotik (WS 21/22) 01 Datei auf Ih*' role='cell' /&gt;&lt;ctrl name='342.7 MB - MP4' role='text' automationid='' check:fulltext='342.7 MB - MP4' /&gt;" Guid="7ea602b9-f537-4a1a-a450-551667fc20b5" ImageBase64="iVBORw0KGgoAAAANSUhEUgAAAJIAAAAfCAYAAAAMVZSIAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAAEnQAABJ0Ad5mH3gAAAXaSURBVHhe7Zlda+M4FIb354diakoYTDHdLJOyLqSEkmFSNoG27kUyGSalWSYMYTtMCyntQC7MkgsvJZw9ko4df0iynbrMjV4QNK4iS0ePzofyGxgZ1SADklEtMiAZ1SIDklEtMiAZ1SIDklEtMiAZ1SIDklEtMiAZ1SIDklEtMiAZ1SIJSAEshh64tgWNRkO0fRe8qwUEG+qi0bwrvufd0oNYa1iOO6lxrXdtGCwC+r9KM/CieaiaM4Bn6i3XMwwc0dfqzumZTivwXdHfGSZH3o6TbJbtQufLM7xQr7fQ7ITe5/o4u2JF+9A4mdEToXicZLOa0OqNYLmmTkpFdnFg8ESPSBKQZtBptqAzHMH0yxSbD70jm7/QPp1DSL2kehqAQ5PLgrS6dKCxZ4FzMoARG3c8AO8d62tjX90KArjj85C06w408V3Nj/fUVyUCYI+1Nky0i0B964JN65CCdOCBz+cwgkHPg1aT+l7qcX6NOABs/o0m9B/ooUorH1zeF5sUJBd6ZMPRsAfe703R1/ZgptmK8NYDi9ulFEgyrWHyng2g2wSk9QhhswV0OZAQyHnW+WwW0LVx3EKPItfiDN+1j4svAiMGwOaAuFe6Mx3C5JjNyeGHQgpSdr6bpXi+34UFPapbAgCc/0GxV70/RzD2cf7YVw4S2ow+R1ojJMw2zXPFoaS9snlE2RkkNOEQPYpkgEira5dv6nTsSUFSSbWwQrFTx6C4LuPoIwD60GeQ4IbPVWGaxm1/7JUHCbXzOkoqGr/PIEGP4quWvZlDd5956b5ICUqCBICHgUWIIx9jQF780OK6p3/JOSgNEo+5qhP3iCENw5Z3g34Rya4M0l4HymQuW4X4PZyPjfMpkbclAVjOu9w9tz/L3Vi0zjlbU2mQKHdQbEIdigEg0FWeY3WFB5qDRrllaZBobYcXuRxMeCuE5xF7KRxKIUgv6yXMzltg79nQkeUyzK0fosvDCfP/VgGJTk/jeKLPvbKKvJE2RCWVBID+liWt4QTamFvwTaJ8rxCkEO1zxvI/Yei30hYAOkRSr3oPfZavcXtWBIlsap1lXMUax8GQ5gyX/GNFkDKVUrMD05+ymmSNE0OXl0zSSoNE391hA0RupAlPOaUBCD+3cY6YtP4Q/43EjcSScbYWHUhJ27CGVdvFN8khq1EpAB76vMhof0q/UyTD0bpKgrQJYfXdB4/lU3uZkElOonGInpxsXRGkRKV0hbGWqjb3/E54HdKSGz4DQhmQ/nuG0TGDSOHldEp6jdLKeBKZJ6RncSKrAymu2tJVj/3n5O1DG/9EobTZRx8UiZ7FnlYHkqQdtMB/SDoLiZNA7RzaInFoGpgH3QrTi7gpKd0LQHp58KHF6MfNGEm9nF4BS+olC9ErH5KEQbYnMPZSUWldNrSR1jeiNG6N9SiJ99LmRU0yXlZZTyK8jwVxARd5qTj304G0Lf9Zm30PcndgUieBejVIsJmKiZ2ymStcfK6lXxjcdDDXQm9yOoVV6bCUVPbUlZUEgJRno9wCk+V43IogqTYup3ANQRCk27/FGWIuJKXyIbqySBUfJUObVPTdwrYdpzJIIhkLYfl1S3SqfWAeA8PgB/Z5DsvIRvySz4bWtUjadlJQNcmOJAcgrtC+skoucbqZ3gqkHSUDIK7Q/pHZ5TUgqS+BfRbuWCS6Yp/v4lBeObQV/sIgDW3kSf4YpXKsqgo/sfBTNawxKQCgSoVfsqXyDVRFkIIxm1txaNtVUgAor+OXwLkb+9eApFbp0PZ86YLzvgeDMVE4HkAn/omESnydZCCRN7NP/BTdyTZ/JCs8XYCDIUf2cww3guouSysVABQScG65i80qyTbZp+FexNVN3VIBwG+xmW2zZfuvBin8gaWga4OFm8mNg81yPRj8XfJHSRlItCnReLIWb5gSJP3Nq16akMQuKGVXCTqQMnOv8qP2rlICwL2q7Kb7F4NkZLSLDEhGtciAZFSLDEhGtciAZFSLDEhGNQjgf+MnnYYB95fbAAAAAElFTkSuQmCC" InformativeScreenshot="7d4e4dff7f05808c98b42559ee7ee2fe.png" ScopeSelectorArgument="&lt;wnd app='chrome.exe' cls='Chrome_WidgetWin_1' idx='*' /&gt;" SearchSteps="Selector">
+                              <uix:TargetAnchorable.FullSelectorArgument>
+                                <InArgument x:TypeArguments="x:String">
+                                  <CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_6">String.Format("&lt;ctrl role='grouping' idx='{0}' /&gt;&lt;ctrl role='row' /&gt;&lt;ctrl name='* MB - MP4' role='text' /&gt;", groupingIdx)</CSharpValue>
+                                </InArgument>
+                              </uix:TargetAnchorable.FullSelectorArgument>
+                            </uix:TargetAnchorable>
+                          </uix:NGetAttribute.Target>
+                        </uix:NGetAttribute>
+                        <ui:Matches BuilderPattern=".+?MB" sap:VirtualizedContainerService.HintSize="483.2,60" sap2010:WorkflowViewState.IdRef="Matches_1" IsBuilderTabModified="True" Model="[{&quot;Index&quot;:0,&quot;OperationID&quot;:&quot;LIT&quot;,&quot;OperationName&quot;:&quot;Literal&quot;,&quot;OperationValue&quot;:&quot;.+?MB&quot;,&quot;QuantifierFirstValue&quot;:&quot;1&quot;,&quot;QuantifierID&quot;:&quot;EXT&quot;,&quot;QuantifierName&quot;:&quot;Exactly&quot;,&quot;QuantifierSecondValue&quot;:null}]" Pattern=".+?MB" RegexOption="IgnoreCase, Compiled">
+                          <ui:Matches.Input>
+                            <InArgument x:TypeArguments="x:String">
+                              <CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_20">fileSizeStr</CSharpValue>
+                            </InArgument>
+                          </ui:Matches.Input>
+                          <ui:Matches.Result>
+                            <OutArgument x:TypeArguments="scg:IEnumerable(str:Match)">
+                              <CSharpReference x:TypeArguments="scg:IEnumerable(str:Match)" sap2010:WorkflowViewState.IdRef="CSharpReference`1_17">fileSizeMatch</CSharpReference>
+                            </OutArgument>
+                          </ui:Matches.Result>
+                        </ui:Matches>
+                        <Assign sap:VirtualizedContainerService.HintSize="483.2,60" sap2010:WorkflowViewState.IdRef="Assign_5">
+                          <Assign.To>
+                            <OutArgument x:TypeArguments="x:String">
+                              <CSharpReference x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpReference`1_18">fileSizeStr</CSharpReference>
+                            </OutArgument>
+                          </Assign.To>
+                          <Assign.Value>
+                            <InArgument x:TypeArguments="x:String">
+                              <CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_21">fileSizeMatch.First().ToString().Substring(0,fileSizeMatch.First().ToString().Length-3).Trim()</CSharpValue>
+                            </InArgument>
+                          </Assign.Value>
+                        </Assign>
+                        <Assign sap:VirtualizedContainerService.HintSize="483.2,60" sap2010:WorkflowViewState.IdRef="Assign_6">
+                          <Assign.To>
+                            <OutArgument x:TypeArguments="x:Double">
+                              <CSharpReference x:TypeArguments="x:Double" sap2010:WorkflowViewState.IdRef="CSharpReference`1_19">fileSize</CSharpReference>
+                            </OutArgument>
+                          </Assign.To>
+                          <Assign.Value>
+                            <InArgument x:TypeArguments="x:Double">
+                              <CSharpValue x:TypeArguments="x:Double" sap2010:WorkflowViewState.IdRef="CSharpValue`1_22">Double.Parse(fileSizeStr)</CSharpValue>
+                            </InArgument>
+                          </Assign.Value>
+                        </Assign>
+                        <If sap:VirtualizedContainerService.HintSize="483.2,248.8" sap2010:WorkflowViewState.IdRef="If_1">
+                          <If.Condition>
+                            <InArgument x:TypeArguments="x:Boolean">
+                              <CSharpValue x:TypeArguments="x:Boolean" sap2010:WorkflowViewState.IdRef="CSharpValue`1_23">fileSize &gt; out_FileSize</CSharpValue>
+                            </InArgument>
+                          </If.Condition>
+                          <If.Then>
+                            <Assign sap:VirtualizedContainerService.HintSize="262.4,60" sap2010:WorkflowViewState.IdRef="Assign_7">
+                              <Assign.To>
+                                <OutArgument x:TypeArguments="x:Double">
+                                  <CSharpReference x:TypeArguments="x:Double" sap2010:WorkflowViewState.IdRef="CSharpReference`1_20">out_FileSize</CSharpReference>
+                                </OutArgument>
+                              </Assign.To>
+                              <Assign.Value>
+                                <InArgument x:TypeArguments="x:Double">
+                                  <CSharpValue x:TypeArguments="x:Double" sap2010:WorkflowViewState.IdRef="CSharpValue`1_11">fileSize</CSharpValue>
+                                </InArgument>
+                              </Assign.Value>
+                            </Assign>
+                          </If.Then>
+                        </If>
+                        <Assign sap:VirtualizedContainerService.HintSize="483.2,60" sap2010:WorkflowViewState.IdRef="Assign_8">
+                          <Assign.To>
+                            <OutArgument x:TypeArguments="x:Int32">
+                              <CSharpReference x:TypeArguments="x:Int32" sap2010:WorkflowViewState.IdRef="CSharpReference`1_21">itemIndex</CSharpReference>
+                            </OutArgument>
+                          </Assign.To>
+                          <Assign.Value>
+                            <InArgument x:TypeArguments="x:Int32">
+                              <CSharpValue x:TypeArguments="x:Int32" sap2010:WorkflowViewState.IdRef="CSharpValue`1_24">itemIndex + 1</CSharpValue>
+                            </InArgument>
+                          </Assign.Value>
+                        </Assign>
+                      </Sequence>
+                    </ui:InterruptibleWhile.Body>
+                    <ui:InterruptibleWhile.Condition>
+                      <CSharpValue x:TypeArguments="x:Boolean" sap2010:WorkflowViewState.IdRef="CSharpValue`1_18">itemIndex + 1 &lt; countVideoOptions</CSharpValue>
+                    </ui:InterruptibleWhile.Condition>
+                  </ui:InterruptibleWhile>
+                </Sequence>
+              </ActivityAction>
+            </uix:NApplicationCard.Body>
+            <uix:NApplicationCard.TargetApp>
+              <uix:TargetApp Area="-9, -9, 1938, 1218" BrowserType="Chrome" IconBase64="iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAAEnQAABJ0Ad5mH3gAAABNSURBVDhPYwCC/xRihv9MpvVk4VEDBpUBIAASgNH42DA+CBBlAC4ahIk2AAbQ+UQbgC4H42M1AASQNWCjQQDEhhsA4pCDqWcA+ZjhPwDpP9odak59twAAAABJRU5ErkJggg==" InformativeScreenshot="ed544512b76578ef97cb6a386bb6c4e5.png" Selector="&lt;html app='chrome.exe' url='https://ilias.studium.kit.edu*' /&gt;" Url="https://ilias.studium.kit.edu*" />
+            </uix:NApplicationCard.TargetApp>
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+          </uix:NApplicationCard>
+          <FlowStep.Next>
+            <FlowStep x:Name="__ReferenceID0">
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <av:Point x:Key="ShapeLocation">200,370.5</av:Point>
+                  <av:Size x:Key="ShapeSize">200,52.8</av:Size>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+              <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="200,52.8" sap2010:WorkflowViewState.IdRef="LogMessage_2" Level="Info">
+                <ui:LogMessage.Message>
+                  <InArgument x:TypeArguments="x:Object">
+                    <CSharpValue x:TypeArguments="x:Object" sap2010:WorkflowViewState.IdRef="CSharpValue`1_2">"Largest File is " + out_FileSize.ToString() + "MB"</CSharpValue>
+                  </InArgument>
+                </ui:LogMessage.Message>
+                <sap:WorkflowViewStateService.ViewState>
+                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                  </scg:Dictionary>
+                </sap:WorkflowViewStateService.ViewState>
+              </ui:LogMessage>
+            </FlowStep>
+          </FlowStep.Next>
+        </FlowStep>
+      </FlowStep.Next>
+    </FlowStep>
+    <x:Reference>__ReferenceID0</x:Reference>
+    <x:Reference>__ReferenceID1</x:Reference>
+  </Flowchart>
+</Activity>
